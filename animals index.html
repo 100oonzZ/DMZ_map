@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DMZ 생태문화지도 동물카드</title>
+
+  <!-- 구글 폰트 로드 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  >
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;500;600;700&display=swap" rel="stylesheet">
+
+
+  <style>
+    .ibm-plex-sans-kr-medium {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.ibm-plex-sans-kr-bold {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+    body {
+      margin: 0;
+      padding-top: 130px; /* navbar 높이(55px) + 여유 공간 */
+      font-family: IBM Plex Sans KR, sans-serif;
+      background: #f5f5f5;
+    }
+    
+    body {
+  margin: 0;
+  padding-top: 140px;   /* 네비+여백 높이 유지 */
+  font-family: IBM Plex Sans KR, sans-serif;
+  background: #DADFE0;  /* 원하시는 단색 코드로 변경하세요 */
+}
+
+    /* Navbar */
+    .navbar {
+      position:fixed; top:20px; left:50%;
+      transform:translateX(-50%);
+      width:90%; max-width:960px; height:55px;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 20px;
+      background:rgba(0,0,0,0.78);
+      box-shadow:4px 4px 16px rgba(0,0,0,0.25);
+      border-radius:30px;
+      backdrop-filter:blur(7.5px);
+      -webkit-backdrop-filter:blur(7.5px);
+      z-index:1000;
+      color:#fff;
+      font-family:'Dongle', sans-serif;
+      font-weight:500;
+    }
+    .navbar__logo { font-size:24px; margin-left:30px; }
+    .navbar__menu {
+      font-size:22px;
+      display:flex; gap:33px;
+      list-style:none; margin-right:30px; padding:0;
+    }
+    .navbar__menu li a {
+      color:#fff; text-decoration:none; transition:color .2s;
+    }
+    .navbar__menu li a:hover { color:#C4FEDD; }
+
+.navbar__menu li a.active, .navbar__menu li a:hover {
+      color: #C4FEDD;
+    }
+
+    /* Grid Layout */
+    main {
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    section.cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    /* Flip Card */
+    .flip-card {
+      perspective: 1000px;
+
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* 1:1 Aspect Ratio */
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .flip-card-front {
+      background: #fff;
+      z-index: 1;  
+    }
+    .flip-card-front .front-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .flip-card-front .front-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.68);
+      backdrop-filter: blur(10px);
+      z-index: 1;
+    }
+    .flip-card-front .front-title {
+      position: absolute;
+      top: 8%;
+      left: 8%;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #000;
+      line-height: 1.2;
+      z-index: 2;
+    }
+    .flip-card-front .front-animal {
+      position: absolute;
+      top: 35%;             
+  left: 50%;
+  transform: translate(-50%, -50%);
+      width: 48%;
+      height: auto;
+      max-height: 40%; /* 카드 높이의 최대 40% */
+      transform: translateX(-50%);
+      object-fit: contain;
+      z-index: 2;
+    }
+
+    /* 산양 */
+.front-animal.animal-01 {
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55%;
+  max-height: 55%;
+}
+
+/* 수리부엉이 */
+.front-animal.animal-02 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-height: 44%;
+}
+
+/* 담비 */
+.front-animal.animal-03 {
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72%;
+  max-height: 100%;
+}
+
+/* 사향노루 */
+.front-animal.animal-04 {
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48%;
+  max-height: 100%;
+}
+
+/* 어름치 */
+.front-animal.animal-05 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 58%;
+  max-height: 100%;
+}
+
+/* 곰 */
+.front-animal.animal-06 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 43%;
+  max-height: 100%;
+}
+
+/* 오리 */
+.front-animal.animal-07 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46%;
+  max-height: 100%;
+}
+
+.front-animal.animal-08 {
+  top: 44%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  width: 46%;
+  max-height: 100%;
+}
+
+.front-animal.animal-09 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 76%;
+  max-height: 100%;
+}
+
+
+    .flip-card-front .front-text-wrapper {
+      position: absolute;
+      bottom: 7%;
+      left: 8%;
+      right: 8%;
+      display: flex;
+      gap: 16px;
+      z-index: 2;
+    }
+    .flip-card-front .front-text {
+      flex: 1;
+      font-size: 9px;
+      font-weight: 500;
+      color: #333;
+      line-height: 1.5;
+    }
+    .flip-card-back {
+      background: #fff;
+      transform: rotateY(180deg);
+      display: block;
+      padding: 0;
+  margin: 0;
+       z-index: 2;
+    }
+    .flip-card-back img {
+      display: block;  
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+
+    .flip-card-front {
+  z-index: 1;   /* 앞면은 낮은 레이어 */
+}
+
+.flip-card-back {
+  z-index: 2;   /* 뒤집혔을 때 앞면 위로 올라옴 */
+}
+
+/* ─── Footer ───────────────────────────────── */
+.site-footer {
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  padding: 20px 0;
+  color: #fff;
+  font-family: 'Dongle', sans-serif;
+  text-align: center;
+  font-weight: 300;
+}
+.site-footer .footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+}
+.site-footer a {
+  color: #C4FEDD;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.2s;
+}
+.site-footer a:hover {
+  color: #FFFFFF;
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar__logo">DMZ 생태문화지도 동물편</div>
+    <ul class="navbar__menu">
+      <li><a href="dmz index.html">DMZ</a></li>
+  <li><a href="index.html">지도</a></li>
+  <li><a href="animals index.html" class="active" >동물카드</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    
+    <section class="cards">
+      <!-- 카드 1: 산양 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="front-bg" src="images/s-bg.jpg" alt="산양" />
+            <div class="front-overlay"></div>
+            <div class="front-title">살아있는 화석,<br>산양</div>
+       <img class="front-animal animal-01" src="my.png" alt="산양" />
+            <div class="front-text-wrapper">
+              <div class="front-text">산양의 이름은 ‘숲에 사는 작은 양’이라는 뜻을 가지고 있는데 사실 생김새는 양보다 소를 많이 닮았습니다. 물론 크기는 소처럼 크지 않고 다 자라도 송아지보다 조금<br> 크거나 작은 정도입니다.</div>
+              <div class="front-text">그리고 놀랍게도 지금 산양의 생김새는<br> 2백만 년 전의 산양의 모습과 거의<br> 비슷하다고 합니다. 그래서 산양은 <br>‘살아있는 화석’이라고도 불립니다.</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <img src="b1.jpg" alt="산양 상세"/>
+          </div>
+        </div>
+      </div>
+      <!-- 카드 2: 수리부엉이 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="front-bg" src="images/ b-bg.jpg" alt="산양" />
+            <div class="front-overlay"></div>
+            <div class="front-title">밤하늘의 제왕,<br>수리부엉이</div>
+            <img class="front-animal animal-02" src="a2.png" alt="수리부엉이" />
+            <div class="front-text-wrapper">
+              <div class="front-text">수리부엉이는 우리나라에 살면서 덩치가 가장 크고 사납습니다. 몸길이가 약 70cm정도이며 날개를 펼치면 2m나 됩니다. 칡부엉이의 두 배가 되는 크기이지요.</div>
+              <div class="front-text">그래서 이름에도 맹금류를 나타내는 수리가 붙어 있습니다. 게다가 꿩, 뱀, 고라니 새끼, 삵 그리고 같은 맹금류들 까지 사냥하는 명실상부한 밤하늘의 제왕입니다.</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <img src="b2.jpg" alt="산양 상세"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- 카드 3: 담비 -->
+  <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="front-bg" src="images/d-bg.jpg" alt="담비" />
+            <div class="front-overlay"></div>
+            <div class="front-title">건강한 생태계의 증인,<br>담비</div>
+            <img class="front-animal animal-03" src="a3.png" alt="담비" />
+            <div class="front-text-wrapper">
+              <div class="front-text">현재 우리나라에서 발견되는 담비는 노란목도리담비가 대표적입니다. 먹이는 나무열매를 비롯해 작은 동물도 잡아먹고 때때로 협동으로 고라니나 멧돼지를 사냥하는 경우도 있습니다.</div>
+              <div class="front-text">생태계의 포식자로서 담비가 살고 있다면 그 숲은 다른 야생동물도 살 수
+있는 건강한 숲이라는 의미입니다. 하지만 담비는 고급 모피로 애용되어 왔고 이 때문에 멸종위기종이 되었습니다. </div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <img src="b3.jpg" alt="담비 상세"/>
+          </div>
+        </div>
+      </div>
+      <!-- 카드 4: 여우 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="front-bg" src="images/fox-bg.jpg" alt="사향노루" />
+            <div class="front-overlay"></div>
+            <div class="front-title">최고의 향기 탓에 사라져가는 <br>사향노루 </div>
+            <img class="front-animal animal-04" src="a5.png" alt="여우" />
+            <div class="front-text-wrapper">
+              <div class="front-text">세계 3대 천연향료들 중 하나가 바로 사향노루 수컷의 생식기 분비선에 있는 주머니인 사향입니다. 또한 3대 한의약재로도 쓰입니다. 이런 이유로 사향노루는 멸종 위험에 처해있습니다.  </div>
+              <div class="front-text">사향노루는 인간의 끝없는 욕심 때문에 수백년이 넘는 세월동안 위협을 받고 사라질 위기에 처해있습니다. 그리고 지금은 전쟁이 만들어준 통제된 DMZ라는 특수한 공간속에서 겨우겨우 살아가고 있습니다.</div>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <img src="b4.jpg" alt="노루 상세" />
+          </div>
+        </div>
+      </div>
+      <!-- 카드 5: 사슴 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="front-bg" src="images/deer-bg.jpg" alt="사슴" />
+            <div class="front-overlay"></div>
+            <div class="front-title">물속에 탑을 쌓는 <br>어름치</div>
+            <img class="front-animal animal-05" src="a4.png" alt="어름치" />
+            <div class="front-text-wrapper">
+              <div class="front-text">우리나라에는 호랑이 무늬를 가지고 있는 특산종 민물고기 어름치가 살고 있습니다. 어름치는 우리나리 '국보급' 민물고기로 중요하고 매력적인 물고기입니다.</div>
+              <div class="front-text">어름치라는 이름은 어름치의 온몸을 덥고 있는 무늬가 물 밖에서 쳐다보아도 어른거린다 해서 어름치가 되었다고 합니다.</div>
+            </div> 
+          </div>
+          <div class="flip-card-back">
+
+            <img src="popup6.jpg" alt="사슴 상세" />
+          </div>
+        </div>
+      </div>
+      <!-- 카드 6: 반달가슴곰  -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="front-bg" src="images/deer-bg.jpg" alt="사슴" />
+            <div class="front-overlay"></div>
+            <div class="front-title">지리산으로 온걸 환영해! <br>반달가슴곰 </div>
+            <img class="front-animal animal-06" src="a7.png" alt="어름치" />
+            <div class="front-text-wrapper">
+              <div class="front-text">반달가슴곰은 우리나라에서는 DMZ일원을 제외하면 절멸한 것으로 추정됩니다. 따라서 우리나라에서는 6마리 방사를 시작으로 복원사업에 열중하고 있습니다.</div>
+              <div class="front-text">방사된 곰들은 해외에서 들여온 녀석들로 흔히 우수리종으로 불리는데, 우리나라 토종 반달가슴곰과 같은 유전자형을 지닌 녀석들입니다. 현재 지리산에 살고 있는 반달가슴곰은 34마리로 알려져 있습니다.</div>
+            </div> 
+          </div>
+          <div class="flip-card-back">
+
+            <img src="b6.jpg" alt="사슴 상세" />
+          </div>
+        </div>
+      </div>
+      <!-- 카드 7: 호사비오리 -->
+       <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="front-bg" src="images/deer-bg.jpg" alt="사슴" />
+            <div class="front-overlay"></div>
+            <div class="front-title">사치스러울 정도로 아름다운 <br>호사비오리 </div>
+            <img class="front-animal animal-07" src="a6.png" alt="어름치" />
+            <div class="front-text-wrapper">
+              <div class="front-text">호사비오리는 아름다운 외모 때문에 '호사스럽다'고 불립니다. 오리과의 비오리들 중 한 종류인 이 새는 전 세계적으로 희귀한 멸종위기종으로 외모가 참 근사한 것으로 유명합니다.</div>
+              <div class="front-text">옆구리 쪽에 자리 잡은 반달무늬가 특별하며, 머리카락을 멋지게 뒤로 넘긴 것 같은 댕기가 인상적입니다. 그리고 붉은 부리와 그 끝의 노란 점은 마치 예쁜 립스틱을 곱게 바른 것 같습니다.</div>
+            </div> 
+          </div>
+          <div class="flip-card-back">
+
+            <img src="b7.jpg" alt="사슴 상세" />
+          </div>
+        </div>
+      </div>
+      <!-- 카드 8: 토끼 -->
+       <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="front-bg" src="images/deer-bg.jpg" alt="사슴" />
+            <div class="front-overlay"></div>
+            <div class="front-title">천년 전설의 주인공<br>두루미  </div>
+            <img class="front-animal animal-08" src="a8.png" alt="어름치" />
+            <div class="front-text-wrapper">
+              <div class="front-text">순우리말인 두루미는 학이라고도 불립니다. 지구상 두 번째로 큰 새로 추운 겨울을 우리나라에서 보냅니다. 그리고 전 세계에서 약 1500마리 정도만 있는 국제적 멸종위기 동물입니다.</div>
+              <div class="front-text">두루미라는 이름은 ‘뚜름뚜름’ 하는 두루미의 울
+음소리에서 왔다는 설이 가장 일반적입니다. 우리 조상은 예로부터 두루미를 새 중의 신선이라고 여겼습니다.</div>
+            </div> 
+          </div>
+          <div class="flip-card-back">
+
+            <img src="b8.jpg" alt="사슴 상세" />
+          </div>
+        </div>
+      </div>
+      <!-- 카드 9: 곰 -->
+       <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img class="front-bg" src="images/deer-bg.jpg" alt="사슴" />
+            <div class="front-overlay"></div>
+            <div class="front-title">앞으로도 계속 만나고 싶은 <br>점박이 물범 </div>
+            <img class="front-animal animal-09" src="a9.png" alt="어름치" />
+            <div class="front-text-wrapper">
+              <div class="front-text">점박이물범은 회색에서 황갈색 바탕에 검은색과 흰색 점무늬가 있습니다. 마치 사람의 지문처럼 옆머리의 점무늬로 각각을 구별할 수 있습니다.</div>
+              <div class="front-text">몸은 부드러운 털로 뒤덮여 있는데,1년에 한 번 이상 털갈이를 해야 방수와 보온 기능을 유지할 수 있습니다. 점박이물범은 8000마리에서 현재 600마리 안팎으로 줄며 위험한 지경에 처해 있다고 합니다.</div>
+            </div> 
+          </div>
+          <div class="flip-card-back">
+
+            <img src="b9.jpg" alt="사슴 상세" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- ─── Footer ───────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>© 국립수목원, 녹색연합 All rights reserved.</p>
+      <p>
+        <a href="#">이용약관</a> |
+        <a href="#">2025 DMZ 생태문화지도 동물카드. </a> |
+        <a href="#">문의하기</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DMZ의 자연 환경</title>
+
+  <!-- 구글 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=IBM+Plex+Sans+KR:wght@300;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ─── 기본 리셋 ───────────────────────────────── */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'IBM Plex Sans KR', sans-serif; color: #333; line-height: 1.6; }
+    html, body {
+  overflow-x: hidden;
+}
+
+    /* Navbar */
+    .navbar {
+      position:fixed; top:20px; left:50%;
+      transform:translateX(-50%);
+      width:90%; max-width:1000px; height:55px;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 20px;
+      background:rgba(0,0,0,0.78);
+      box-shadow:4px 4px 16px rgba(0,0,0,0.25);
+      border-radius:30px;
+      backdrop-filter:blur(7.5px);
+      -webkit-backdrop-filter:blur(7.5px);
+      z-index:1000;
+      color:#fff;
+      font-family:'Dongle', sans-serif;
+      font-weight:500;
+    }
+    .navbar__logo { font-size:24px; margin-left:30px; }
+    .navbar__menu {
+      font-size:22px;
+      display:flex; gap:33px;
+      list-style:none; margin-right:30px; padding:0;
+    }
+    .navbar__menu li a {
+      color:#fff; text-decoration:none; transition:color .2s;
+    }
+    .navbar__menu li a:hover { color:#C4FEDD; }
+
+    .navbar__menu li a.active, .navbar__menu li a:hover {
+      color: #C4FEDD;
+    }
+
+    /* ─── 히어로 섹션 ───────────────────────────────── */
+    .hero {
+      height: 100vh;
+      background: url('d11.jpg') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hero::after {
+      content: ""; position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.3);
+    }
+    .hero h1 {
+      position: relative; color: #fff;
+      font-family: 'Dongle'; font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
+
+    /* ─── “보러가기” 버튼 ───────────────────────── */
+    .nature-btn {
+      position: fixed; bottom: 110px; right: 263px;
+      display: flex; align-items: center;
+      background: none; border: none; cursor: pointer;
+      z-index: 2000;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+    }
+    .nature-btn__icon {
+      width: 48px; height: 48px;
+      border: 2px solid #fff; border-radius: 50%;
+      background: #fff; color: #000;
+      display: flex; align-items:center; justify-content:center;
+      font-size: 24px; margin-right: 12px;
+      animation: sway 2s ease-in-out infinite,
+                 pulse 1.6s ease-in-out infinite;
+    }
+    .nature-btn__text {
+      color: #fff; font-size: 28px; font-weight: 500;
+      white-space: nowrap;
+    }
+    .nature-btn:hover .nature-btn__icon {
+      animation: vibration 0.2s linear infinite;
+    }
+    @keyframes sway   { 0%,100%{transform:translateX(0)} 50%{transform:translateX(4px)} }
+    @keyframes pulse  { 0%,100%{opacity:1} 50%{opacity:0.7} }
+    @keyframes vibration {
+      0%{transform:translate(0,0)} 25%{transform:translate(2px,0)}
+      50%{transform:translate(-2px,0)} 75%{transform:translate(2px,0)}
+      100%{transform:translate(0,0)}
+    }
+
+    /* ─── 컨테이너 (소개 섹션) ───────────────────────────────── */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* 가로 스크롤 방지 */
+}
+main {
+  margin: 0;
+  padding: 0;
+}
+
+/* 1) next-section 에만 full-bleed */
+#next-section {
+  position: relative;
+  width: 100vw;      /* 뷰포트 전체 너비 */
+  height: 50vh;      /* 필요에 따라 높이 조절 */
+  margin: 0;
+  padding: 0;
+  background: url('d1.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2) 오버레이 레이어 */
+#next-section::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#next-section {
+  position: relative;
+  width: 100vw;
+  height: 60vh;
+  margin: 0;
+  padding: 0;
+  background: url('d1.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#next-section::after {
+  content: "";
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.5);
+  pointer-events: none;
+  z-index:1;
+}
+
+#next-section > div {
+  position: relative;  /* ::after 위로 올라오기 위해 */
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 20px;      /* 좌우 약간 여유 */
+}
+#next-section > div h2 {
+  font-weight: 500;
+  
+  font-size: 2rem;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  margin-top: 120px;
+}
+#next-section > div p {
+  line-height: 1.8;
+   color: #FFFFFF;
+   font-size: 13px;
+   font-weight: 350;
+}
+
+
+    /* ─── 특징 섹션: Grid 레이아웃 ───────────────────────────────── */
+.feature {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+/* 홀수번째 feature: 이미지 왼쪽, 텍스트 오른쪽 */
+.feature:nth-of-type(even) {
+  grid-template-areas: "img text";
+}
+
+/* 짝수번째 feature: 텍스트 왼쪽, 이미지 오른쪽 */
+.feature:nth-of-type(odd) {
+  grid-template-areas: "text img";
+}
+
+/* 공통 스타일 */
+.feature img {
+  grid-area: img;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-top: 60px;
+}
+
+/* 공통 텍스트 컨테이너 */
+.feature .text {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* 공통 마진은 없애고… */
+  margin-top: 0;
+}
+
+/* 1번째 feature 섹션 텍스트만 ↑ */
+.feature:nth-of-type(1) .text {
+  margin-top: 300px;
+}
+
+/* 2번째 feature 섹션 텍스트만 ↑ */
+.feature:nth-of-type(2) .text {
+  margin-top: 220px;
+}
+
+/* 3번째 feature 섹션 텍스트만 ↑ */
+.feature:nth-of-type(3) .text {
+  margin-top: 240px;
+}
+
+.feature:nth-of-type(4) .text {
+  margin-top: 250px;
+}
+/* 4번째, 5번째… 필요하면 계속 추가 */
+
+
+.feature .text h3 {
+  
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.feature .text p {
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+/* 모바일에서 세로 스택 */
+@media (max-width: 768px) {
+  .feature {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "img"
+      "text";
+    gap: 24px;
+    margin: 60px auto;
+  }
+}
+
+/* ─── DMZ 생태 갤러리 슬라이더 ───────────────────────────────── */
+.gallery-slider {
+  max-width: 1000px;
+  margin: 60px auto;    /* 위/아래 여백 */
+  padding: 0 20px;      /* 좌우 여백 */
+}
+
+/* 제목 */
+.gallery-slider .slide-title {
+  font-family: 'Dongle', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  text-align: left;
+    margin: 180px 0 15px 0;
+
+}
+
+/* 슬라이더 컨테이너 */
+.gallery-slider .slider {
+  position: relative;   /* ★ 버튼을 absolute 기준으로 */
+  width: 100%;
+  height: 600px;        /* ← 고정 높이 */
+  overflow: hidden;     /* 넘치는 부분 차단 */
+  border-radius: 12px;  /* 모서리 둥글게 */
+}
+
+/* 트랙 */
+.gallery-slider .slider-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+/* 슬라이드 한 장 */
+.gallery-slider .slide {
+  flex: 0 0 100%;
+  height: 100%;        /* 부모 높이에 꽉 채움 */
+  box-sizing: border-box;
+  position: relative;  /* 혹시 내부 절대위치 요소가 있으면 대비 */
+}
+
+/* 내부 이미지 */
+.gallery-slider .slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 둥근 모서리가 .slider에서 잘려 보이지 않게 하려면
+     overflow:hidden; border-radius을 슬라이더에만 걸어도 충분합니다. */
+}
+
+/* ◀ ▶ 버튼 (원형) */
+.gallery-slider .slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  border-radius: 50%;
+  font-size: 3.3rem;
+  font-family: 'Dongle', sans-serif;
+  line-height: 0;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.gallery-slider .slider-btn.prev { left: 10px; }
+.gallery-slider .slider-btn.next { right: 10px; }
+.gallery-slider .slider-btn:hover {
+  background: rgba(255,255,255,1);
+}
+
+
+
+
+
+
+ /* ─── Footer ───────────────────────────────── */
+.site-footer {
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  padding: 25px 0;
+  color: #fff;
+  font-family: 'Dongle', sans-serif;
+  text-align: center;
+  font-weight: 200;
+  line-height: 2.6;
+  height: 125px;
+}
+.site-footer .footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+}
+.site-footer a {
+  color: #C4FEDD;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.2s;
+}
+.site-footer a:hover {
+  color: #FFFFFF;
+}
+
+
+
+
+
+/* ─── 스크롤 리빌 애니메이션 ───────────────────────────────── */
+
+/* 초기 상태: 살짝 아래로 이동, 불투명도 0 */
+.feature img,
+.feature .text {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* 뷰포트에 들어오면 in-view 클래스 추가 → 원위치, 투명도 1 */
+.feature.in-view img,
+.feature.in-view .text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 같은 효과를 소개 섹션에도 적용하고 싶다면 */
+/* #next-section 의 .intro 부분에도 초기 숨김 & 리빌 */
+#next-section .intro {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+#next-section.in-view .intro {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+  </style>
+</head>
+<script>
+  window.addEventListener('load', () => window.scrollTo(0,0));
+</script>
+
+  <!-- 네브바 -->
+  <nav class="navbar">
+    <div class="navbar__logo">DMZ 생태문화지도 동물편</div>
+    <ul class="navbar__menu">
+      <li><a href="dmz index.html" class="active" >DMZ</a></li>
+      <li><a href="index.html">지도</a></li>
+      <li><a href="animals index.html">동물카드</a></li>
+    </ul>
+  </nav>
+
+  <!-- 히어로 -->
+  <section class="hero">
+    <button class="nature-btn" id="nature-btn">
+      <div class="nature-btn__icon">↓</div>
+      <div class="nature-btn__text">DMZ의 자연환경 보러가기</div>
+    </button>
+  </section>
+
+  <!-- 다음 섹션 (소개) -->
+  <main>
+    <section id="next-section" >
+      <div>
+        <h2>DMZ 비무장지대, 생명의 보고</h2>
+        <p>
+          전쟁의 폐허로 남은 DMZ는 지난 수십년간 사람의 손길이 닿지 않으면서
+          자연이 스스로 복원한 살아있는 생태계입니다. <br> 멸종위기종과 다양한 동·식물이
+          조화롭게 공존하는 이곳의 풍경을 만나보세요.
+        </p>
+      </div>
+    </section>
+
+    <!-- 특징 1 -->
+    <section class="feature">
+      <img src="d10.jpg" alt="한강 하구 습지" />
+      <div class="text">
+        <h3>전쟁의 폐허에서 생물 다양성의 보고로</h3>
+        <p>
+          DMZ 인접지역에는 식생우수지역, 습지, 희귀식물군 서식지, 자연경관지 등
+          다양한 <br>자연생태지역이 존재하며 고등식물과 척추동물 2,930여 종이 서식·분포합니다.
+          이는 한반도에 서식·분포하는 동식물의 30%에 해당하며 두루미, 저어새, 수달,
+          산양 등 <br>보호가 절실한 멸종위기종 44종이 포함돼 있습니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 특징 2 -->
+    <section class="feature">
+      <div class="text">
+        <h3>DMZ는 한반도의 동서생태축</h3>
+        <p>
+          DMZ는 한반도의 허리 248km가 동서로 끊어지지 않고 연결된 생태계, 즉 동서생태<br>축으로서
+          남북생태축인 백두대간과 함께 한반도의 핵심 생태축입니다. 중동부 산악<br>지역부터 한강하구
+         기수지역까지 다양한 서식지가 이어집니다.
+        </p>
+      </div>
+      <img src="d5.jpg" alt="DMZ 산림" />
+    </section>
+
+<section class="feature">
+      <div class="text">
+        <h3>한반도 지질학적 역사의 현장</h3>
+        <p>
+       추가령구조곡, 한탄강·임진강 주상절리, 적벽 등은 한반도의 지질학적 역사를<br> 보여주는
+        동시에 경관도 아름다워 관광자원으로서 가치가 큽니다.
+        </p>
+      </div>
+      <img src="d4.jpg" alt="DMZ 산림" />
+    </section>
+
+ 
+<!-- 슬라이더 섹션 바로 아래에 붙여넣으세요 -->
+<section class="gallery-slider">
+  <h4 class="slide-title">DMZ 생태 갤러리</h4>
+  <div class="slider">
+    <div class="slider-track">
+      <div class="slide"><img src="d2.jpg" alt="풍경1" /></div>
+      <div class="slide"><img src="d3.png" alt="풍경2" /></div>
+      <div class="slide"><img src="d8.jpg" alt="풍경3" /></div>
+      <div class="slide"><img src="d7.jpg" alt="풍경4" /></div>
+      <div class="slide"><img src="d12.jpg" alt="풍경5" /></div>
+    </div>
+    <button class="slider-btn prev">‹</button>
+    <button class="slider-btn next">›</button>
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>© 국립수목원, 녹색연합 All rights reserved.</p>
+      <p>
+        <a href="#">이용약관</a> |
+        <a href="#">2025 DMZ 생태문화지도 동물카드.</a> |
+        <a href="#">문의하기</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // 버튼 클릭 시 스크롤
+    document.getElementById('nature-btn')
+      .addEventListener('click', () => {
+        document.getElementById('next-section')
+                .scrollIntoView({ behavior: 'smooth' });
+      });
+
+    // 히어로가 보일 때만 버튼 노출
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const btn = document.getElementById('nature-btn');
+        if (e.isIntersecting) {
+          btn.style.opacity = '1';
+          btn.style.pointerEvents = 'auto';
+        } else {
+          btn.style.opacity = '0';
+          btn.style.pointerEvents = 'none';
+        }
+      });
+    }, { threshold: 1.0 }).observe(document.querySelector('.hero'));
+  </script>
+
+  <script>
+  // 기존 nature-btn 관찰자 아래에 붙여넣기
+
+  // 1) 관찰할 요소 모으기
+  const revealSections = [
+    ...document.querySelectorAll('.feature'),
+    document.getElementById('next-section')
+  ];
+
+  // 2) 옵저버 생성
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        // 한 번 리빌되면 더 이상 관찰을 안 해도 되면 언옵저브
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.3  // 30% 보이면 트리거
+  });
+
+  // 3) 각 섹션에 옵저버 달기
+  revealSections.forEach(el => {
+    if (el) revealObserver.observe(el);
+  });
+</script>
+
+<script>
+;(function(){
+  const track = document.querySelector('.gallery-slider .slider-track');
+  const slides = Array.from(track.children);
+  const prevBtn = document.querySelector('.gallery-slider .slider-btn.prev');
+  const nextBtn = document.querySelector('.gallery-slider .slider-btn.next');
+  let idx = 0;
+  function update(){ track.style.transform = `translateX(-${idx*100}%)`; }
+  prevBtn.addEventListener('click', ()=>{ idx = Math.max(0, idx-1); update() });
+  nextBtn.addEventListener('click', ()=>{ idx = Math.min(slides.length-1, idx+1); update() });
+})();
+</script>
+
+
+
+
+</body>
+</html>
+
